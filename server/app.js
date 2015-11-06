@@ -96,7 +96,8 @@ app.delete('/data', function(req,res) {
 
     console.log(req.body.id);
     pg.connect(connectionString, function (err, client) {
-        client.query("DELETE FROM people WHERE id = " + req.body.id + "RETURNING id", function (err, results) {
+        var personID = req.body.id;
+        client.query("DELETE FROM people WHERE id = $1",[personID], function (err, results) {
             if (err) {
                 console.log("Error inserting data: ", err);
                 res.send(false);
