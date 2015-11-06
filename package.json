@@ -1,7 +1,7 @@
 {
-  "name": "Mongo_Lecture",
+  "name": "mongo_lecture",
   "version": "1.0.0",
-  "description": "",
+  "description": "Given the mongo delete lecture activity, convert the mongo-based addPerson ajax call to use the Postgres database. You’ll need to get PSQL running on your computer, set up a new database and create a table for the people as such: ``` CREATE TABLE people (   id serial NOT NULL,   name character varying(255) NOT NULL,   location character varying(255) NOT NULL,   age integer,   CONSTRAINT people_pkey PRIMARY KEY (id) ); ```",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,5 +17,14 @@
     "mongoose": "^4.2.3",
     "path": "^0.12.7",
     "pg": "^4.4.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pazimmel/sql_conversion_assignment.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pazimmel/sql_conversion_assignment/issues"
+  },
+  "homepage": "https://github.com/pazimmel/sql_conversion_assignment#readme"
 }
