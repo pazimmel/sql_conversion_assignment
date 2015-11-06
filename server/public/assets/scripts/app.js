@@ -1,5 +1,5 @@
 $(document).ready(function(){
-   $("#search").submit(getData);
+   $("#search").submit(findData);
 
    $("#addSomeone").submit(addSomeone);
 
@@ -7,8 +7,26 @@ $(document).ready(function(){
 
    getData();
 });
+function findData(){
+    event.preventDefault();
+    var values = {};
 
-function getData(values){
+    $.each($(this).serializeArray(), function(i, field){
+        values[field.name] = field.value;
+    });
+    //console.log(values);
+    $("#search").find("input[type=text]").val("");
+    $.ajax({
+        type: "GET",
+        url: "/find",
+        data: values,
+        success: function(data){
+            console.log(data);
+            updateDOM(data);
+        }
+    });
+}
+function getData(){
     //console.log(values);
     event.preventDefault();
     var values = {};
@@ -51,14 +69,14 @@ function addSomeone(){
 function deletePerson(){
    var deletedId = {"id" : $(this).data("id")};
 
-   console.log("Meaningful Log: ", deletedId);
+   //console.log("Meaningful Log: ", deletedId);
 
    $.ajax({
       type: "DELETE",
       url: "/data",
       data: deletedId,
       success: function(data){
-         console.log(data);
+         //console.log(data);
          getData();
       }
    })
